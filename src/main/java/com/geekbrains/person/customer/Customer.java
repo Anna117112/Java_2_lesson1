@@ -7,6 +7,7 @@ import com.geekbrains.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Customer extends Person {
@@ -53,45 +54,81 @@ public class Customer extends Person {
     public void findProductOnMarket(Market market) {
 
 
-                for (Product product : getExpectedPurchaseList()) {
-                    for (Seller seller : market.getSellers()){
-                        boolean isBoughtSeller = seller.sellNameLastName(this,market);
-                    boolean isBought = seller.sellProducts(this, product);
-                    // если продукты есть и фио совпадает с заданным
-                    if (isBought && isBoughtSeller) {
+        int count = 0;
 
-                        break;
-                    }
-                    else if (!isBoughtSeller && isBought){
-                        break;
-                    }
+        while (count < 1) {
+            //идем по продавцам
+            for (Seller seller : market.getSellers()) {
+                boolean isBoughtSeller = true;
+//          проверяет имя заданого продавца
+                isBoughtSeller = seller.sellNameLastName(this, market);
+                // если продавец не тот который задан идем к следующему
+
+                if (!isBoughtSeller) {
+                    continue;
+                } else {
+                    // если продавец наш то идем по списку покупок
+
+                    for (Product product : getExpectedPurchaseList()) {
+                        // метод проверяет наличие нужного товара и хватит ли нам денег на него
+                        boolean isBought = seller.sellProducts(this, product);
+                        // если нет то выходим из детущего цикла и из wile передаем один и
+                        // переходим к циклам после него
+                        if (!isBought) {
+                            count = 1;
+                            break;
+
+                        }
+                        // если все ок то совершаем покупку
+
+                        seller.Sale(this, product);
+
 
                     }
+
+
+
                 }
+
+
             }
+            // если по циклам нет заданного прововца   то выходим из них к следующему после wile
+            count=1;
+
+        }
+        // проходимся по продовцам
+
+        for (Seller seller : market.getSellers()) {
+            boolean isBoughtSeller = true;
+            // если уже ьыли покупки то уходим
+            if (purchaseList.size()>0){
+                break;}
 
 
+            isBoughtSeller = seller.sellNameLastName(this, market);
+            // если имя совпадает с заданным продавцом то ищем дгугого т.к у него нет нужного товара
+            // выяснили из вложенного цикла выше
+            if (isBoughtSeller) {
+                continue;
+            } else {
 
-//
-//    public void findProductOnMarket(Market market) {
-//
-//        for (Product product : getExpectedPurchaseList()) {
-//            for (Seller seller : market.getSellers()) {
-//                boolean isBought1 = seller.sellNameLastName(this);
-//                boolean isBought = seller.sellProducts(this, product);
-//                if (isBought1) {
-//
-//                    break;
-//                }
-//                     else if (isBought){
-//
-//
-//                  break;
-//                     }
-//            }
-//        }
-//    }
+                for (Product product : getExpectedPurchaseList()) {
 
+                    // проходимся по списку покупок
+
+                    boolean isBought = seller.sellProducts(this, product);
+                    // если продукта нет или цена дорогая выходим
+                    if (!isBought) {
+
+                        break;
+                    }
+                    // еслим все ок покупаем
+                    seller.Sale(this, product);
+                }
+
+            }
+        }
+    }
 
 
     public void info() {
@@ -107,13 +144,7 @@ public class Customer extends Person {
                 result.append(product.getQuantity());
                 result.append(" ");
             }
-//               // for (Seller seller : sellerNameLastname) {
-//                    result.append("У продовца  ");
-//                    result.append(seller.getName());
-//                    result.append(" ");
-//                    result.append(seller.getLastName());
-//                    result.append(" ");
-//            }
+
         }
 
 
@@ -143,11 +174,4 @@ public class Customer extends Person {
     
     
 
-//    public List<Seller> getSellerNameLastname() {
-//        return sellerNameLastname;
-//    }
-//
-//    public void setSellerNameLastname(List<Seller> sellerNameLastname) {
-//        this.sellerNameLastname = sellerNameLastname;
-//    }
-}
+   }

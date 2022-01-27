@@ -47,8 +47,8 @@ public class Main {
 
 
 
-       String name = ("Виталий");
-        String lastname = ("Еремин");
+       String name = ("Алексей");
+        String lastname = ("Ушаков");
 
         return new Customer(List.of(firstProduct, secondProduct), 50, name,lastname);
     }
@@ -63,12 +63,12 @@ public class Main {
         Product firstProduct = new Product();
         firstProduct.setName(MarketConstants.TOMATOES_PRODUCT_NAME);
         firstProduct.setPrice(5);
-        firstProduct.setQuantity(0);
+        firstProduct.setQuantity(5);
 
         Product secondProduct = new Product();
         secondProduct.setName(MarketConstants.CUCUMBER_PRODUCT_NAME);
         secondProduct.setPrice(8);
-        secondProduct.setQuantity(5);
+        secondProduct.setQuantity(6);
 
         List<Product> products = new ArrayList<>();
         products.add(firstProduct);
@@ -80,14 +80,14 @@ public class Main {
 
     private static Seller createSecondSeller() {
         Seller seller = new Seller();
-        seller.setName("Алексей");
+        seller.setName("Алекс");
         seller.setLastName("Ушаков");
         seller.setCash(0);
 
         Product firstProduct = new Product();
         firstProduct.setName(MarketConstants.TOMATOES_PRODUCT_NAME);
         firstProduct.setPrice(8);
-        firstProduct.setQuantity(40);
+        firstProduct.setQuantity(5);
 
         Product secondProduct = new Product();
         secondProduct.setName(MarketConstants.CUCUMBER_PRODUCT_NAME);
