@@ -62,6 +62,7 @@ public class Customer extends Person {
             isBoughtSeller = seller1.sellNameLastName(this, market);
             if (!isBoughtSeller) {
                 continue;
+                
                 // если продавец не тот который задан идем к следующему
             }
 

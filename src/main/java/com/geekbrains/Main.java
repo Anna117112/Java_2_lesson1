@@ -76,6 +76,7 @@ public class Main {
         seller.setProducts(products);
 
         return seller;
+
     }
 
     private static Seller createSecondSeller() {

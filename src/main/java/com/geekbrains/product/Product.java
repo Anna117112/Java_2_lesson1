@@ -26,6 +26,7 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+
     }
 
     public void setQuantity(int quantity) {

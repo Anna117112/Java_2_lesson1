@@ -10,6 +10,7 @@ public class Market {
 
     public List<Seller> getSellers() {
         return sellers;
+
     }
 
     public void setSellers(List<Seller> sellers) {

@@ -108,6 +108,7 @@ public class Seller extends Person {
 
     public String getName() {
         return name;
+
     }
 
     public void setName(String name) {
