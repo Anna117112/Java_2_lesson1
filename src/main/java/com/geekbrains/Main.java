@@ -80,14 +80,14 @@ public class Main {
 
     private static Seller createSecondSeller() {
         Seller seller = new Seller();
-        seller.setName("Алекс");
+        seller.setName("Алексей");
         seller.setLastName("Ушаков");
         seller.setCash(0);
 
         Product firstProduct = new Product();
         firstProduct.setName(MarketConstants.TOMATOES_PRODUCT_NAME);
         firstProduct.setPrice(8);
-        firstProduct.setQuantity(5);
+        firstProduct.setQuantity(6);
 
         Product secondProduct = new Product();
         secondProduct.setName(MarketConstants.CUCUMBER_PRODUCT_NAME);

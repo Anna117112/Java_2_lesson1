@@ -53,79 +53,92 @@ public class Customer extends Person {
     }
     public void findProductOnMarket(Market market) {
 
+        boolean isBoughtSeller = true;
 
-        int count = 0;
 
-        while (count < 1) {
-            //идем по продавцам
-            for (Seller seller : market.getSellers()) {
-                boolean isBoughtSeller = true;
+        for (Seller seller1 : market.getSellers()) {
+
 //          проверяет имя заданого продавца
-                isBoughtSeller = seller.sellNameLastName(this, market);
+            isBoughtSeller = seller1.sellNameLastName(this, market);
+            if (!isBoughtSeller) {
+                continue;
                 // если продавец не тот который задан идем к следующему
+            }
 
-                if (!isBoughtSeller) {
-                    continue;
-                } else {
-                    // если продавец наш то идем по списку покупок
 
-                    for (Product product : getExpectedPurchaseList()) {
-                        // метод проверяет наличие нужного товара и хватит ли нам денег на него
-                        boolean isBought = seller.sellProducts(this, product);
-                        // если нет то выходим из детущего цикла и из wile передаем один и
-                        // переходим к циклам после него
-                        if (!isBought) {
-                            count = 1;
-                            break;
+            int count = 0;
+
+            while (count < 1) {
+                //идем по продавцам
+                for (Seller seller : market.getSellers()) {
+
+//          проверяет имя заданого продавца
+                    isBoughtSeller = seller.sellNameLastName(this, market);
+                    // если продавец не тот который задан идем к следующему
+
+                    if (!isBoughtSeller) {
+                        continue;
+                    } else {
+                        // если продавец наш то идем по списку покупок
+
+                        for (Product product : getExpectedPurchaseList()) {
+                            // метод проверяет наличие нужного товара и хватит ли нам денег на него
+                            boolean isBought = seller.sellProducts(this, product);
+                            // если нет то выходим из детущего цикла и из wile передаем один и
+                            // переходим к циклам после него
+                            if (!isBought) {
+                                count = 1;
+                                break;
+
+                            }
+                            // если все ок то совершаем покупку
+
+                            seller.Sale(this, product);
+
 
                         }
-                        // если все ок то совершаем покупку
-
-                        seller.Sale(this, product);
 
 
                     }
 
 
-
                 }
-
+                // если по циклам нет заданного прововца   то выходим из них к следующему после wile
+                count = 1;
 
             }
-            // если по циклам нет заданного прововца   то выходим из них к следующему после wile
-            count=1;
+            // проходимся по продовцам
 
-        }
-        // проходимся по продовцам
+            for (Seller seller : market.getSellers()) {
 
-        for (Seller seller : market.getSellers()) {
-            boolean isBoughtSeller = true;
-            // если уже ьыли покупки то уходим
-            if (purchaseList.size()>0){
-                break;}
-
-
-            isBoughtSeller = seller.sellNameLastName(this, market);
-            // если имя совпадает с заданным продавцом то ищем дгугого т.к у него нет нужного товара
-            // выяснили из вложенного цикла выше
-            if (isBoughtSeller) {
-                continue;
-            } else {
-
-                for (Product product : getExpectedPurchaseList()) {
-
-                    // проходимся по списку покупок
-
-                    boolean isBought = seller.sellProducts(this, product);
-                    // если продукта нет или цена дорогая выходим
-                    if (!isBought) {
-
-                        break;
-                    }
-                    // еслим все ок покупаем
-                    seller.Sale(this, product);
+                // если уже ьыли покупки то уходим
+                if (purchaseList.size() > 0) {
+                    break;
                 }
 
+
+                isBoughtSeller = seller.sellNameLastName(this, market);
+                // если имя совпадает с заданным продавцом то ищем дгугого т.к у него нет нужного товара
+                // выяснили из вложенного цикла выше
+                if (isBoughtSeller) {
+                    continue;
+                } else {
+
+                    for (Product product : getExpectedPurchaseList()) {
+
+                        // проходимся по списку покупок
+
+                        boolean isBought = seller.sellProducts(this, product);
+                        // если продукта нет или цена дорогая выходим
+                        if (!isBought) {
+
+                            break;
+                        }
+                        // еслим все ок покупаем
+                        seller.Sale(this, product);
+                    }
+
+                }
             }
         }
     }
