@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
     //1) Seller, может добавлять, убирать продукты, выставлять стоимость
     //2) Customer может покупать товар, может что-то желать
     //3) Когда seller продает продукты, у него они отнимаются, но добавляются у customer

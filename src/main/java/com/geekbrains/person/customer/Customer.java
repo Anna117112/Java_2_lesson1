@@ -56,6 +56,7 @@ public class Customer extends Person {
         boolean isBoughtSeller = true;
 
 
+
         for (Seller seller1 : market.getSellers()) {
 
 //          проверяет имя заданого продавца
