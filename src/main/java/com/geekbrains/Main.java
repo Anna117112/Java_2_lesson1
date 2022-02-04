@@ -6,9 +6,11 @@ import com.geekbrains.person.seller.Seller;
 import com.geekbrains.product.Product;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class Main {
+
     //1) Seller, может добавлять, убирать продукты, выставлять стоимость
     //2) Customer может покупать товар, может что-то желать
     //3) Когда seller продает продукты, у него они отнимаются, но добавляются у customer
@@ -47,8 +49,8 @@ public class Main {
 
 
 
-       String name = ("Виталий");
-        String lastname = ("Еремин");
+       String name = ("Алексей");
+        String lastname = ("Ушаков");
 
         return new Customer(List.of(firstProduct, secondProduct), 50, name,lastname);
     }
@@ -63,12 +65,12 @@ public class Main {
         Product firstProduct = new Product();
         firstProduct.setName(MarketConstants.TOMATOES_PRODUCT_NAME);
         firstProduct.setPrice(5);
-        firstProduct.setQuantity(0);
+        firstProduct.setQuantity(5);
 
         Product secondProduct = new Product();
         secondProduct.setName(MarketConstants.CUCUMBER_PRODUCT_NAME);
         secondProduct.setPrice(8);
-        secondProduct.setQuantity(5);
+        secondProduct.setQuantity(6);
 
         List<Product> products = new ArrayList<>();
         products.add(firstProduct);
@@ -76,6 +78,7 @@ public class Main {
         seller.setProducts(products);
 
         return seller;
+
     }
 
     private static Seller createSecondSeller() {
@@ -87,7 +90,7 @@ public class Main {
         Product firstProduct = new Product();
         firstProduct.setName(MarketConstants.TOMATOES_PRODUCT_NAME);
         firstProduct.setPrice(8);
-        firstProduct.setQuantity(40);
+        firstProduct.setQuantity(6);
 
         Product secondProduct = new Product();
         secondProduct.setName(MarketConstants.CUCUMBER_PRODUCT_NAME);
