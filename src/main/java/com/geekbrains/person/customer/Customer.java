@@ -67,7 +67,6 @@ public class Customer extends Person {
                 // если продавец не тот который задан идем к следующему
             }
 
-
             int count = 0;
 
             while (count < 1) {

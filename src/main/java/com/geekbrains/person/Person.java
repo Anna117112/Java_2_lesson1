@@ -7,7 +7,6 @@ public abstract class Person {
     public long getCash() {
 
         return cash;
-
     }
 
     public void setCash(long cash) {
